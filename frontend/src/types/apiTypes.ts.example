@@ -1,0 +1,56 @@
+/* tslint:disable */
+/* eslint-disable */
+/**
+/* This file was automatically generated from pydantic models by running pydantic2ts.
+/* Do not modify it by hand - just update the pydantic models and then re-run the script
+*/
+
+/**
+ * Response model for the hello endpoint.
+ */
+export interface HelloResponse {
+  /**
+   * Greeting message from the API
+   */
+  message: string;
+}
+
+/**
+ * Example request model to demonstrate type generation.
+ */
+export interface ExampleRequest {
+  /**
+   * Name of the user
+   */
+  name: string;
+  /**
+   * Email address of the user
+   */
+  email?: string;
+  /**
+   * User preferences as key-value pairs
+   */
+  preferences?: { [key: string]: string };
+}
+
+/**
+ * Example response model to demonstrate type generation.
+ */
+export interface ExampleResponse {
+  /**
+   * Unique identifier for the created resource
+   */
+  id: string;
+  /**
+   * Name of the user
+   */
+  name: string;
+  /**
+   * Timestamp when the resource was created
+   */
+  created_at: string;
+  /**
+   * List of associated items
+   */
+  items?: string[];
+}
