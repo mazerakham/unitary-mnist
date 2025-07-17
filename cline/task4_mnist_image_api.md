@@ -164,7 +164,26 @@ backend/resources/mnist/*-ubyte.gz
 
 Created the resources/mnist directory with a .gitkeep file to ensure the directory structure is preserved.
 
-### 5. Benefits of this Implementation
+### 5. Dependencies
+
+The implementation requires the numpy package for handling the MNIST dataset. This dependency has been added to the project's pyproject.toml file:
+
+```toml
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.104.0"
+uvicorn = "^0.23.2"
+pydantic = "^2.4.2"
+numpy = "^1.26.0"
+```
+
+When setting up the project with poetry, numpy will be installed automatically. If you're not using poetry, you can install numpy manually:
+
+```bash
+pip install numpy
+```
+
+### 6. Benefits of this Implementation
 
 1. **Modular Design**: Split the MNIST dataset handling into a proper module with separate files for different concerns.
 2. **Lazy Loading**: The dataset is loaded on demand if not already loaded, which improves startup time.

@@ -62,3 +62,56 @@ Task 4 has been completed. The MNIST image API has been implemented with the fol
 3. Updated the .gitignore file to exclude the MNIST dataset files while preserving the directory structure.
 
 This implementation provides a clean, efficient way to serve MNIST images for the digit identification game, with proper separation of concerns and type safety throughout the API.
+
+## Testing the API
+
+### Dependencies
+
+The MNIST image API requires the numpy package for handling the dataset. Make sure it's installed in your environment:
+
+```bash
+cd backend
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install numpy
+# Or if using poetry:
+poetry add numpy
+```
+
+The dependency has been added to the project's pyproject.toml file, so it will be installed automatically when setting up the project with poetry.
+
+### Testing Steps
+
+To test the MNIST image API, you can use the following steps:
+
+1. **Start the Backend Server**:
+   ```bash
+   cd backend
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   uvicorn mnist.app:app --reload
+   ```
+
+2. **Get a Session Token**:
+   ```bash
+   curl -X POST http://localhost:8000/api/token
+   ```
+   This will return a JSON response with a token, room_id, player_number, and status.
+
+3. **Test the MNIST Image API Without a Token**:
+   ```bash
+   curl http://localhost:8000/api/mnist/image
+   ```
+   This should return a JSON response with an image array and no label.
+
+4. **Test the MNIST Image API With a Token**:
+   ```bash
+   curl -H "Token: YOUR_TOKEN_HERE" http://localhost:8000/api/mnist/image
+   ```
+   This should return a JSON response with an image array.
+
+5. **Test the MNIST Image API With a Token and Include Label**:
+   ```bash
+   curl -H "Token: YOUR_TOKEN_HERE" "http://localhost:8000/api/mnist/image?include_label=true"
+   ```
+   This should return a JSON response with an image array and a label (0-9).
+
+The API endpoint follows the same authentication pattern as the forty-two endpoint, requiring a valid session token to access the full functionality. The image is returned as a 28x28 array of pixel values (0-1), and the label is included only if requested and a valid token is provided.
