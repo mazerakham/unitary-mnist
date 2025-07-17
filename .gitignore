@@ -59,3 +59,9 @@ yarn-error.log
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# MNIST Dataset
+backend/resources/mnist/*.gz
+backend/resources/mnist/*-ubyte.gz
+# Keep the directory structure
+!backend/resources/mnist/.gitkeep

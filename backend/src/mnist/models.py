@@ -3,7 +3,7 @@ Data models for the mnist application.
 """
 
 from pydantic import BaseModel, Field
-from typing import Dict, List, Optional, Union
+from typing import Dict, List, Optional, Union, Any
 from enum import Enum
 import uuid
 
@@ -101,4 +101,16 @@ class TokenRequest(BaseModel):
     
     token: str = Field(
         description="Session token to validate"
+    )
+
+
+class MnistImageResponse(BaseModel):
+    """Response model for the MNIST image endpoint."""
+    
+    image: List[List[float]] = Field(
+        description="28x28 MNIST image as a 2D array of pixel values (0-1)"
+    )
+    label: Optional[int] = Field(
+        None,
+        description="The actual digit label (0-9) for the image, may be None in game mode"
     )

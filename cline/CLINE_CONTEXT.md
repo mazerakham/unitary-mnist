@@ -38,3 +38,27 @@ Task 3 has been completed. The verbose task descriptions have been moved to sepa
 The main CLINE_CONTEXT.md file now contains concise summaries of each task with links to the detailed files. This improves readability while preserving all the implementation details for reference when needed.
 
 This approach makes the context document more manageable and focused, while still providing access to all the detailed information through the linked files. Future tasks can follow this pattern, keeping the main document concise with links to detailed implementation files.
+
+# Task 4: Get MNIST image API
+
+Implementing an API to fetch MNIST images for a digit identification game. This involves downloading the MNIST dataset at server start and serving random images from the dataset via an API endpoint. The dataset will be stored in server resources with appropriate gitignore settings to avoid redownloading on every server start.
+
+For detailed implementation steps and code examples, see [task4_mnist_image_api.md](task4_mnist_image_api.md).
+
+## Implementation Status
+
+Task 4 has been completed. The MNIST image API has been implemented with the following features:
+
+1. Created a modular MNIST dataset handling system that:
+   - Downloads the dataset only once and stores it in a server resources directory
+   - Loads the dataset into memory when needed
+   - Provides functions to get random images with optional labels
+
+2. Added a new API endpoint (/api/mnist/image) that:
+   - Serves random MNIST images from the dataset
+   - Validates user sessions using tokens
+   - Allows optionally including the actual digit label
+
+3. Updated the .gitignore file to exclude the MNIST dataset files while preserving the directory structure.
+
+This implementation provides a clean, efficient way to serve MNIST images for the digit identification game, with proper separation of concerns and type safety throughout the API.
